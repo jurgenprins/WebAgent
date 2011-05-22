@@ -1,0 +1,120 @@
+May 10
+- fixed bug in wn_fmt_retract that retracted the whole tree when links 
+  accidentally matched. there is still rather unlikely bug in this that
+  should be solved
+
+May 7
+- added a link-follower in wn_fmt_fetch that recursively follows a link
+  in the page when it is the _only_ link, i.e. we assume it is a redirect
+
+Nov 3
+- finally fixed wnletter to use templates, db library etc.
+
+Oct 24
+- fixed another bug in wn_net_http_status causing a HTTP_STAT_OK even when it
+  is not ok (causing the rest of the header to be ignored in scanning)
+- changed wn_net_scan_header function to not use strdup anymore
+
+Oct 18
+- fixed stupid bug in wn_db_email_by_uid causing out of bounds errors if 
+  called more than MAX_RES times in a single db_open -> db_free process
+
+Oct 17
+- created extra navigation links on site, faq, help, tos, about etc.
+- made screenshots of all pages and combined them in an explaining interfacedoc
+
+Oct 16
+- added field change_freq to database to keep track of average change freq
+- changed wnprune to additionally calculate the change_freq as avg updates
+  per week for all documents and store it in the database
+- used the change_freq field in the website display.php and menu.php to 
+  display average number of emails sent in a week per document
+- fixed some minor layout issues in joining process
+
+Oct 15
+- moved swish index to its own directory and added a swish.conf configfile
+- added wnindex program to filter out most frequently encountered words
+  in the swish index
+- added swish.sh shell program to generate index, dump it and run wnindex
+- used output from wnindex in the website menu.php to offer predefined searches
+
+Oct 10
+- fixed wnclean to use the template system
+- moved db functions to own lib subdir, to enable other dbms engines
+- added db/wrappers directory where uid->email mapping can be made external
+
+Oct 6
+- added new column for #subcribers per doc and sorting support in display.php
+
+Sep 27
+- added wn_mail_spool and wn_mail_process to lib to enforce a new way of
+  handling mail through a spool directory which makes it all more reliable
+- changed wnmail and wncontrol to send mail through spool
+- added a new child process to wncontrol to process spooled mail
+
+Sep 26
+- changed wnclean to use the new db functions
+- tested wncontrol with new db functions
+- changed db function wn_db_query to reconnect if server passes away
+- changed template usage in wncontrol to load template only once
+
+Sep 25
+- added wn_db to lib directory to provide core database functions
+- changed wncontrol to use the new db functions (not compiled/tested yet)
+
+Sep 23
+- added wn_str_escape to escape quotes before using in sql statements
+- changed title field in database to be filled automatically from <title>
+  header in html pages
+
+Sep 18
+- added external indexer swish to provide full-text search on website
+
+Sep 13
+- added categories for documents in database
+- changed php scripts to include category displays
+- changed wnclean to include category delete
+
+Sep 7
+- fixed bug in wncontrol that childproc SIGSEGV'd when using templates for mail
+
+Sep 6
+- added wn_template in library, it reads and parses templates for use in mail
+- changed wn_mail_fmt to make use of templates (in etc/templates)
+- changed wnmail to make use of templates (in etc/templates)
+- changed wncontrol to make use of templates, not yet proven stable
+
+Sep 5
+- added a err_no -> err_str mapping with wn_get_errstr function
+- finished wnclean utility, included option to force-delete one document
+
+Aug 30
+- added filter field in database used in wncontrol with wn_fmt_typecount to 
+  filter priority mails
+- added errors table in which wncontrol keeps track of how many times the same 
+  error occurred one after another so appropriate action can take place
+
+Aug 29
+- added wn_fmt_typecount function for counting elements of specific types 
+- added wn_fmt_retract function to undo the latest addtag for use in:
+- changed parser to excluse all clickable images (these are mostly ads)
+
+Aug 28
+- rewrote wn_net_http* functions to support generic header parsing
+- added http/1.1 support for chunking, still behind a #undef for it is buggy
+- added wn_str_shift as a safe function instead of ptr = &ptr[shift]
+- introduced new SIGSEGV bug when loading large urls :-( 
+- resolved minor bug, forgot to initialise url->data as url->data[0] = 0
+- changed dynamic allocation trigger in wn_net_fetch to do it sooner and more
+- (still SIGSEGV exists, only now it is not reproducable anymore in gdb)
+- introduced WN_FMT_CHAR_NULL (a control char) to represent NULL tags
+- now using If-Modified-Since header from/to database to significantly
+  reduce network load: when applied, it returns WN_SKIP in wn_get_errno
+
+Aug 27
+- added more http header parsing in order to determine 30x relocations
+- 30x relocations are retrieved and parsed by recursively calling wn_net_fetch
+
+Aug 25
+- started logging changes
+- resolved major bug, no test on NULL ptr in wn_fmt_load caused SIGSEGV

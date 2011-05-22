@@ -1,0 +1,173 @@
+.TH WNCONTROL 1L "12 Aug 1999"
+.SH NAME
+wncontrol \- daemon controlling the parse, diff and mail process
+.SH SYNOPSIS
+.B wncontrol
+.I configfile
+.SH DESCRIPTION
+.I wncontrol
+will immediately detach into the background and keep itself busy
+by silently monitoring a MySQL database and running childs. When 
+the time is right, new child processes will be spawned, which 
+will (each) retrieve and parse an URL into a WNF file in a dedicated 
+directory for that URL.
+.LP
+The child compares the newly fetched WNF data to the last saved 
+WNF file and saves everything that is new into a new WNF file.
+This file, which has the current timestamp as its name, contains
+the updates since the last retrieval.
+.LP
+If priority monitoring is enabled, it will also immediately
+notify anyone registered as such in the MySQL database by email
+of what has changed.
+.LP
+The behaviour of
+.I wncontrol
+is completely controlled by the settings in the configuration file
+.I configfile
+:
+.TP
+.B \ DATA_DIR
+In this directory the subdirectories will be created for each
+URL that is retrieved. The name of the subdirectory is deduced from
+the id the URL has in the database. It is apparent the filesystem
+hosting this directory should be kept under surveillance as the
+DATA_DIR is growing over time.
+.TP
+.B \ PID_FILE
+Specifies the path to a file that is written everytime the controller
+starts up. The only content is the process-id of the parent process. If
+you kill (SIGTERM) this process-id, the whole controller, including all 
+childs, will shutdown gracefully, i.e. exit when all data is retrieved
+and parsed.
+.TP
+.B \ LOG_FILE
+Specifies the path to the file that will be filled with logoutput.
+The contents will depend on the settings of LOG_LEVEL.
+.TP
+.B \ LOG_APPEND
+If you set this to 1, the existing logfile will not be cleared at
+startup. Instead, the new logoutput will be appended. If you set this
+to 0, the file will always be cleared at startup.
+.TP
+.B \ LOG_LEVEL
+Depending on this value, the logfile will be filled. If you set this
+to 0, nothing is logged. This is not recommended, since you at least
+should log fatal errors by setting the LOG_LEVEL to 1. If you are
+interested in which URL is retrieved how many times and what the
+statuses are, you set this to 2.
+.TP
+.B \ DB_USER
+This is the authorizing username to the database server. This username
+should at least have select, update and delete permissions on the tables
+in DB_NAME.
+.TP
+.B \ DB_PASS
+This is the authorizing password to the database server, that accompanies
+the DB_USER
+.TP
+.B \ DB_NAME
+This is the name of the database to be selected when the connection
+succeeds.
+.TP
+.B \ DB_MAX_RETRIES
+When the connection fails for any reason, you can let the controller
+retry to connect in reasonable intervals before bailing out. The
+maximum number of retries is specified here.
+.TP
+.B \ MAIL_HOST
+The hostname or ip-adres of the SMTP server you will use to
+send notification emails.
+.TP
+.B \ MAIL_TIMEOUT
+When confirmation is awaited from the MAIL_HOST, this is the
+number of seconds the controller will at maximum wait before
+bailing out. Note that the higher you set this, the longer
+each child process can exist on your machine.
+.TP
+.B \ MAIL_FROM
+This is the emailaddress of the sender of the mail. Note that
+in most cases, the SMTP server wants a very plain and valid 
+address here.
+.TP
+.B \ MAIL_SENDER
+This is the name of the sender of the mail. In the maildata,
+the From field is composed as 'MAIL_SENDER <MAIL_FROM>', so
+in mail clients a friendly sendername appears. You may leave 
+this empty, in which case only MAIL_FROM is used.
+.TP
+.B \ MAIL_SPOOL
+This is the directory where all outgoing mail will be 
+spooled. Each mail will have its own file with ASCII contents
+and sit there to be picked up be the mail processor.
+.TP
+.B \ MAIL_CHUNK
+The number of mails that will be processed in one transaction
+with the SMTP server by the mail processor. 
+.TP
+.B \ MAIL_DELAY
+The number of seconds the mail processor will sleep before
+engaging a new transaction with the SMTP server. Together with
+MAIL_CHUNK, you can tune the outgoing load of your network
+towards the SMTP server as well as the load of the SMTP server.
+.TP
+.B \ TEMPLATE_UPDATED
+The path to the template that will be used for sending update 
+notifications. Update notifications are sent at the time a document 
+is loaded, has an update and has subscribers that want to be notified.
+.TP
+.B \ TEMPLATE_REMOVED
+The path to the template that will be used for sending removal
+notifications. Removal notifications are sent by the utility wnclean
+at the time a document retrieval has generated the same error more
+than a certain number of times, see wnclean(1L)
+.TP
+.B \ TIME_SLICE
+The number of seconds the controller sleeps before checking
+the status of the childs and generating new candidates to
+be retrieved and parsed. Note that each new 'round' will
+take database access. For a not so stressed server, you
+might want to keep this value somewhat higher than 1.
+.TP
+.B \ DOC_MIN_AGE
+The number of seconds at least must have passed since the last 
+retrieval of a specific document before it is considered again. 
+If you want to limit your ip-traffic, you should increase this
+value. In other words, this is the content_slice, the minimum
+number of seconds between each document update.
+.TP
+.B \ DOC_MAX_PARALLEL
+The maximum number of childs that may exist at the same time
+retrieving and parsing documents. It is wise to tune this
+number up as far as your network can handle all child retrievals
+simultaneously without losing speed.
+.TP
+.B \ DOC_TIMEOUT
+The number of seconds the controller will wait for some data
+to arrive from the remote http server before bailing out.
+.TP
+.B \ DOC_MAX_WAIT
+The number of seconds the controller will wait for the whole
+retrieving, parsing and change detection process to complete
+before bailing out. Reasonable value is about 60 seconds
+after DOC_TIMEOUT, since the only way this value will be 
+enforced is when the spawned child locks up or dies unexpectedly.
+.SH NOTES
+If you decide to use priority mail notification, it is wise
+to test your MAIL_* settings by using the 
+.I wnmail
+utility with your settings and see if it returns any inconveniences
+by your selected MAIL_HOST. If you fail to do this and your settings
+are in error, you will never know, because the childs do not report
+to the logfile.
+.SH FILES
+etc/wncontrol.conf
+.SH "SEE ALSO"
+wnparse(1L),
+wndiff(1L),
+wnmail(1L),
+wnletter(1L),
+wnprune(1L),
+wnclean(1L)
+.SH AUTHORS
+Copyright (C) 1999 JP

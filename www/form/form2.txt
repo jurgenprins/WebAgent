@@ -1,0 +1,9 @@
+<form method=post action=http://www.webagent.nl/new.php>
+
+ <input type=hidden name=url value="http://uw.website.hier/">
+
+ Emailadres: <input name=e size=20 maxlength=128>
+
+ <input type=submit value="Hou me op de hoogte">
+
+</form>

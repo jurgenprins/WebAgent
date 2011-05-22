@@ -1,0 +1,7 @@
+*.gz
+bin/*
+db/dump*
+etc/msg
+lib/*
+log/*
+*.o

@@ -1,0 +1,30 @@
+.TH WNLETTER 1L "12 Aug 1999"
+.SH NAME
+wnletter \- mail newsletters with updates within a timespan
+.SH SYNOPSIS
+.B wnletter
+.I config_file
+.I time_span
+.SH DESCRIPTION
+.I wnletter
+uses a MySQL database to determine who is subscribed to which documents
+and checks to see if any of these documents have changed within
+.I time_span
+hours, and then composes and mails newsletters containing all updates
+on every document to the subscribed person.
+.LP
+The database configuration, SMTP gateway and additional settings are fetched 
+from the configuration file
+.I config_file
+For more information on the contents of this file, please refer to
+.I wncontrol(1L)
+.LP
+.SH "SEE ALSO"
+wncontrol(1L),
+wnparse(1L),
+wnmail(1L),
+wndiff(1L),
+wnprune(1L),
+wnclean(1L)
+.SH AUTHORS
+Copyright (C) 1999 JP

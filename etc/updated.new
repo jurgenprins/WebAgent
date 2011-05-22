@@ -1,0 +1,30 @@
+Subject {
+$(TITLE)
+}
+
+Header {
+$(TITLE) - $(URL)
+-------------------------------------------------------------------------------
+}
+
+TextItem {
+$(CONTENT)
+}
+
+ImageItem {
+[IMAGE: $(PARAM)]
+}
+
+LinkItem {
+[$(CONTENT)]
+} 
+
+BlockChange {
+
+}
+
+Footer {
+-------------------------------------------------------------------------------
+WebAgent is een project i.s.m. DDS - voor extra emailadres http://gratis.dds.nl/
+Bezoek het complete archief op http://www.webagent.nl/index.php?d=$(DID)
+}

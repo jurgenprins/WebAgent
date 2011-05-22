@@ -1,0 +1,67 @@
+.TH WNCLEAN 1L "2 Sep 1999"
+.SH NAME
+wnclean \- clean up the document database and data files
+.SH SYNOPSIS
+.B wnclean
+.I config_file
+.I num_errors
+[
+.I id
+]
+.SH DESCRIPTION
+.I wnclean
+is a utility that cleans up the document database by removing
+documents and all related data files that are reported to have more
+than 
+.I num_errors
+the same errors in a row as logged by 
+.I wncontrol(1L)
+For each document, all watchers are notified by email the document is
+no longer in the database and why it was deleted.
+.LP
+For example, if wncontrol reported a domain at which the document resides
+as unresolvable already 13 times in a row, the document and all earlier
+fetched data files will be deleted when 
+.I num_errors
+has a value lower or equal to 13. All watchers are notified by email that
+the domain was unresolvable and therefore the document was deleted.
+.LP
+The optional parameter
+.I id
+, if specified by a positive number, will limit the test on errors to
+only the document specified by the id. This is for manual purposes only.
+.LP
+The WNF data directory is fetched from the configuration file
+.I config_file
+For more information on the contents of this file, please refer to
+.I wncontrol(1L)
+.SH NOTES
+It is possible to set the 
+.I num_errors
+parameter to 0 as to delete all documents that are reported by wncontrol
+as unavailable for some reason in the last run. You are discouraged to do
+so, unless you set the 
+.I id
+parameter. In that case, even if the document has no errors, it will be 
+removed. This is a special case for manually removing certain documents from 
+the database.
+.SH EXAMPLES
+.LP
+wnclean etc/wncontrol.conf 10
+.LP
+remove all documents and datafiles that are reported to be unavailable
+for 10 or more times in a row
+.LP
+wnclean etc/wncontrol.conf 0 55
+.LP
+remove document id 55 and all datafiles regardless whether an error occurred
+or not
+.SH "SEE ALSO"
+wncontrol(1L),
+wndiff(1L),
+wnparse(1L),
+wnmail(1L),
+wnletter(1L),
+wnprune(1L)
+.SH AUTHORS
+Copyright (C) 1999 JP

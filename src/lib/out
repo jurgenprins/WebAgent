@@ -1,0 +1,281 @@
+( cd db; make )
+( cd base; make)
+gcc -g -Wall -I/usr/include/mysql -c mysql.c
+In file included from mysql.h:4,
+                 from mysql.c:9:
+/usr/include/mysql.h:57:23: mysql_com.h: No such file or directory
+/usr/include/mysql.h:58:24: mysql_time.h: No such file or directory
+/usr/include/mysql.h:59:27: mysql_version.h: No such file or directory
+/usr/include/mysql.h:60:21: typelib.h: No such file or directory
+/usr/include/mysql.h:62:70: my_list.h: No such file or directory
+In file included from mysql.h:4,
+                 from mysql.c:9:
+/usr/include/mysql.h:102: error: field `type' has incomplete type
+/usr/include/mysql.h:128:22: my_alloc.h: No such file or directory
+/usr/include/mysql.h:134: error: parse error before "MEM_ROOT"
+/usr/include/mysql.h:138: error: parse error before '}' token
+/usr/include/mysql.h:222: error: parse error before "NET"
+/usr/include/mysql.h:228: error: parse error before "field_alloc"
+/usr/include/mysql.h:247: error: `SCRAMBLE_LENGTH' undeclared here (not in a function)
+/usr/include/mysql.h:264: error: parse error before '*' token
+/usr/include/mysql.h:272: error: parse error before '}' token
+/usr/include/mysql.h:277: error: parse error before "MYSQL_DATA"
+/usr/include/mysql.h:280: error: parse error before '*' token
+/usr/include/mysql.h:281: error: parse error before "field_alloc"
+/usr/include/mysql.h:289: error: parse error before '}' token
+/usr/include/mysql.h:307: error: parse error before "NET"
+/usr/include/mysql.h:317: error: parse error before '}' token
+/usr/include/mysql.h:354: error: parse error before '*' token
+/usr/include/mysql.h:355: error: parse error before '*' token
+/usr/include/mysql.h:356: error: parse error before '*' token
+/usr/include/mysql.h:357: error: parse error before '*' token
+/usr/include/mysql.h:359: error: parse error before '*' token
+/usr/include/mysql.h:360: error: parse error before '*' token
+/usr/include/mysql.h:361: error: parse error before '*' token
+/usr/include/mysql.h:363: error: parse error before '*' token
+/usr/include/mysql.h:364: error: parse error before '*' token
+/usr/include/mysql.h:365: error: parse error before '*' token
+/usr/include/mysql.h:366: error: parse error before '*' token
+/usr/include/mysql.h:367: error: parse error before '*' token
+/usr/include/mysql.h:368: error: parse error before '*' token
+/usr/include/mysql.h:369: error: parse error before '*' token
+/usr/include/mysql.h:370: error: parse error before '*' token
+/usr/include/mysql.h:371: error: parse error before '*' token
+/usr/include/mysql.h:372: error: parse error before '*' token
+/usr/include/mysql.h:374: error: parse error before '*' token
+/usr/include/mysql.h:374: error: parse error before '*' token
+/usr/include/mysql.h:375: error: parse error before '*' token
+/usr/include/mysql.h:378: error: parse error before '*' token
+/usr/include/mysql.h:380: error: parse error before '*' token
+/usr/include/mysql.h:380: error: parse error before '*' token
+/usr/include/mysql.h:387: error: parse error before '*' token
+/usr/include/mysql.h:388: error: parse error before '*' token
+/usr/include/mysql.h:389: error: parse error before '*' token
+/usr/include/mysql.h:391: error: parse error before '*' token
+/usr/include/mysql.h:393: error: parse error before '*' token
+/usr/include/mysql.h:393: error: parse error before '*' token
+/usr/include/mysql.h:394: error: parse error before '*' token
+/usr/include/mysql.h:394: error: parse error before '*' token
+/usr/include/mysql.h:397: error: parse error before '*' token
+/usr/include/mysql.h:399: error: parse error before '*' token
+/usr/include/mysql.h:402: error: parse error before '*' token
+/usr/include/mysql.h:404: error: parse error before '*' token
+/usr/include/mysql.h:412: error: parse error before '*' token
+/usr/include/mysql.h:414: error: `mysql_set_local_infile_handler' declared as function returning a function
+/usr/include/mysql.h:415: error: parse error before "int"
+/usr/include/mysql.h:423: error: parse error before '*' token
+/usr/include/mysql.h:430: error: parse error before '*' token
+/usr/include/mysql.h:431: error: parse error before '*' token
+/usr/include/mysql.h:433: error: parse error before '*' token
+/usr/include/mysql.h:436: error: parse error before '*' token
+/usr/include/mysql.h:437: error: parse error before '*' token
+/usr/include/mysql.h:439: error: parse error before '*' token
+/usr/include/mysql.h:444: error: parse error before '*' token
+/usr/include/mysql.h:447: error: parse error before '*' token
+/usr/include/mysql.h:451: error: parse error before '*' token
+/usr/include/mysql.h:456: error: parse error before '*' token
+/usr/include/mysql.h:459: error: parse error before '*' token
+/usr/include/mysql.h:460: error: parse error before '*' token
+/usr/include/mysql.h:462: error: parse error before '*' token
+/usr/include/mysql.h:463: error: parse error before '*' token
+/usr/include/mysql.h:466: error: parse error before '*' token
+/usr/include/mysql.h:467: error: parse error before '*' token
+/usr/include/mysql.h:468: error: parse error before '*' token
+/usr/include/mysql.h:471: error: parse error before '*' token
+/usr/include/mysql.h:472: error: parse error before '*' token
+/usr/include/mysql.h:473: error: parse error before '*' token
+/usr/include/mysql.h:474: error: parse error before '*' token
+/usr/include/mysql.h:474: error: parse error before '*' token
+/usr/include/mysql.h:475: error: parse error before '*' token
+/usr/include/mysql.h:475: error: parse error before '*' token
+/usr/include/mysql.h:476: error: parse error before '*' token
+/usr/include/mysql.h:476: error: parse error before '*' token
+/usr/include/mysql.h:477: error: parse error before '*' token
+/usr/include/mysql.h:479: error: parse error before '*' token
+/usr/include/mysql.h:480: error: parse error before '*' token
+/usr/include/mysql.h:482: error: parse error before '*' token
+/usr/include/mysql.h:484: error: parse error before '*' token
+/usr/include/mysql.h:486: error: parse error before '*' token
+/usr/include/mysql.h:487: error: parse error before '*' token
+/usr/include/mysql.h:488: error: parse error before '*' token
+/usr/include/mysql.h:489: error: parse error before '*' token
+/usr/include/mysql.h:489: error: parse error before '*' token
+/usr/include/mysql.h:495: error: parse error before '*' token
+/usr/include/mysql.h:499: error: parse error before '*' token
+/usr/include/mysql.h:508: error: parse error before ')' token
+/usr/include/mysql.h:509: error: parse error before '*' token
+/usr/include/mysql.h:512: error: parse error before '*' token
+/usr/include/mysql.h:512: error: parse error before '*' token
+/usr/include/mysql.h:513: error: parse error before '*' token
+/usr/include/mysql.h:513: error: parse error before '*' token
+/usr/include/mysql.h:518: error: parse error before '*' token
+/usr/include/mysql.h:519: error: parse error before '*' token
+/usr/include/mysql.h:521: error: parse error before '*' token
+/usr/include/mysql.h:524: error: parse error before '*' token
+/usr/include/mysql.h:546: error: field `buffer_type' has incomplete type
+/usr/include/mysql.h:558: error: parse error before '*' token
+/usr/include/mysql.h:568: error: parse error before "MEM_ROOT"
+/usr/include/mysql.h:570: error: parse error before '*' token
+/usr/include/mysql.h:574: error: parse error before "result"
+/usr/include/mysql.h:586: error: conflicting types for `last_errno'
+/usr/include/mysql.h:313: error: previous declaration of `last_errno'
+/usr/include/mysql.h:590: error: `MYSQL_ERRMSG_SIZE' undeclared here (not in a function)
+/usr/include/mysql.h:590: error: conflicting types for `last_error'
+/usr/include/mysql.h:316: error: previous declaration of `last_error'
+/usr/include/mysql.h:591: error: `SQLSTATE_LENGTH' undeclared here (not in a function)
+/usr/include/mysql.h:603: error: parse error before '}' token
+/usr/include/mysql.h:620: error: parse error before '*' token
+/usr/include/mysql.h:621: error: parse error before '*' token
+/usr/include/mysql.h:630: error: parse error before '*' token
+/usr/include/mysql.h:633: error: parse error before '*' token
+/usr/include/mysql.h:635: error: parse error before '*' token
+/usr/include/mysql.h:636: error: parse error before '*' token
+/usr/include/mysql.h:637: error: parse error before '*' token
+/usr/include/mysql.h:638: error: parse error before '*' token
+/usr/include/mysql.h:639: error: parse error before '*' token
+/usr/include/mysql.h:640: error: parse error before '*' token
+/usr/include/mysql.h:641: error: parse error before '*' token
+/usr/include/mysql.h:642: error: parse error before '*' token
+/usr/include/mysql.h:643: error: parse error before '*' token
+/usr/include/mysql.h:648: error: parse error before '*' token
+/usr/include/mysql.h:648: error: parse error before '*' token
+/usr/include/mysql.h:649: error: parse error before '*' token
+/usr/include/mysql.h:651: error: parse error before '*' token
+/usr/include/mysql.h:652: error: parse error before '*' token
+/usr/include/mysql.h:653: error: parse error before '*' token
+/usr/include/mysql.h:656: error: parse error before '*' token
+/usr/include/mysql.h:657: error: parse error before '*' token
+/usr/include/mysql.h:658: error: parse error before '*' token
+/usr/include/mysql.h:661: error: parse error before '*' token
+/usr/include/mysql.h:664: error: parse error before '*' token
+/usr/include/mysql.h:665: error: parse error before '*' token
+/usr/include/mysql.h:666: error: parse error before '*' token
+/usr/include/mysql.h:667: error: parse error before '*' token
+/usr/include/mysql.h:668: error: parse error before '*' token
+/usr/include/mysql.h:669: error: parse error before '*' token
+/usr/include/mysql.h:673: error: parse error before '*' token
+/usr/include/mysql.h:673: error: parse error before '*' token
+/usr/include/mysql.h:674: error: parse error before '*' token
+/usr/include/mysql.h:674: error: parse error before '*' token
+/usr/include/mysql.h:675: error: parse error before '*' token
+/usr/include/mysql.h:676: error: parse error before '*' token
+/usr/include/mysql.h:677: error: parse error before '*' token
+/usr/include/mysql.h:678: error: parse error before '*' token
+/usr/include/mysql.h:680: error: parse error before '*' token
+/usr/include/mysql.h:681: error: parse error before '*' token
+/usr/include/mysql.h:682: error: parse error before '*' token
+/usr/include/mysql.h:683: error: parse error before '*' token
+/usr/include/mysql.h:684: error: parse error before '*' token
+/usr/include/mysql.h:685: error: parse error before '*' token
+/usr/include/mysql.h:687: error: parse error before '*' token
+/usr/include/mysql.h:688: error: parse error before '*' token
+/usr/include/mysql.h:689: error: parse error before '*' token
+/usr/include/mysql.h:690: error: parse error before '*' token
+/usr/include/mysql.h:691: error: parse error before '*' token
+/usr/include/mysql.h:692: error: parse error before '*' token
+/usr/include/mysql.h:717: error: parse error before '*' token
+In file included from mysql.c:9:
+mysql.h:10: error: parse error before "MYSQL"
+mysql.h:10: warning: no semicolon at end of struct or union
+mysql.h:11: warning: type defaults to `int' in declaration of `res'
+mysql.h:11: warning: data definition has no type or storage class
+mysql.h:12: error: conflicting types for `row'
+/usr/include/mysql.h:283: error: previous declaration of `row'
+mysql.h:15: error: parse error before '}' token
+mysql.h:15: warning: type defaults to `int' in declaration of `wn_db_t'
+mysql.h:15: warning: data definition has no type or storage class
+mysql.h:17: error: parse error before '*' token
+mysql.h:17: warning: type defaults to `int' in declaration of `wn_db_init'
+mysql.h:17: warning: data definition has no type or storage class
+mysql.h:19: error: parse error before '*' token
+mysql.h:21: error: parse error before '*' token
+mysql.h:23: error: parse error before '*' token
+mysql.h:25: error: parse error before '*' token
+mysql.h:27: error: parse error before '*' token
+mysql.h:29: error: parse error before '*' token
+mysql.c:11: error: parse error before '*' token
+mysql.c:11: warning: return type defaults to `int'
+mysql.c: In function `wn_db_init':
+mysql.c:13: error: invalid operands to binary *
+mysql.c:13: error: parse error before ')' token
+mysql.c:23: error: request for member `connected' in something not a structure or union
+mysql.c:26: error: request for member `has_result' in something not a structure or union
+mysql.c:28: warning: return from incompatible pointer type
+mysql.c: At top level:
+mysql.c:31: error: parse error before '*' token
+mysql.c: In function `wn_db_connect':
+mysql.c:39: error: request for member `connected' in something not a structure or union
+mysql.c:46: warning: implicit declaration of function `mysql_connect'
+mysql.c:46: error: request for member `conn' in something not a structure or union
+mysql.c:46: error: request for member `conn' in something not a structure or union
+mysql.c:48: error: request for member `connected' in something not a structure or union
+mysql.c:56: error: request for member `conn' in something not a structure or union
+mysql.c: At top level:
+mysql.c:60: error: parse error before '*' token
+mysql.c: In function `wn_db_query':
+mysql.c:64: error: `sql' undeclared (first use in this function)
+mysql.c:64: error: (Each undeclared identifier is reported only once
+mysql.c:64: error: for each function it appears in.)
+mysql.c:69: error: `res_idx' undeclared (first use in this function)
+mysql.c:74: error: request for member `connected' in something not a structure or union
+mysql.c:77: error: request for member `connected' in something not a structure or union
+mysql.c:88: error: request for member `conn' in something not a structure or union
+mysql.c:89: error: request for member `conn' in something not a structure or union
+mysql.c:90: error: request for member `conn' in something not a structure or union
+mysql.c:91: error: request for member `conn' in something not a structure or union
+mysql.c:92: error: request for member `connected' in something not a structure or union
+mysql.c:93: error: request for member `conn' in something not a structure or union
+mysql.c:94: error: request for member `conn' in something not a structure or union
+mysql.c:98: error: request for member `conn' in something not a structure or union
+mysql.c:107: error: request for member `res' in something not a structure or union
+mysql.c:107: error: request for member `conn' in something not a structure or union
+mysql.c:108: error: request for member `conn' in something not a structure or union
+mysql.c:109: error: request for member `conn' in something not a structure or union
+mysql.c:115: error: request for member `has_result' in something not a structure or union
+mysql.c:84: error: `va_start' used in function with fixed args
+mysql.c: At top level:
+mysql.c:119: error: parse error before '*' token
+mysql.c: In function `wn_db_next_result':
+mysql.c:125: error: `res_idx' undeclared (first use in this function)
+mysql.c:130: error: request for member `has_result' in something not a structure or union
+mysql.c:130: error: request for member `res' in something not a structure or union
+mysql.c:133: error: request for member `row' in something not a structure or union
+mysql.c:133: error: request for member `res' in something not a structure or union
+mysql.c: At top level:
+mysql.c:139: error: parse error before '*' token
+mysql.c: In function `wn_db_value':
+mysql.c:145: error: `res_idx' undeclared (first use in this function)
+mysql.c:150: error: request for member `row' in something not a structure or union
+mysql.c:153: error: request for member `row' in something not a structure or union
+mysql.c:156: error: request for member `row' in something not a structure or union
+mysql.c:156: error: `column' undeclared (first use in this function)
+mysql.c: At top level:
+mysql.c:159: error: parse error before '*' token
+mysql.c: In function `wn_db_release':
+mysql.c:160: error: request for member `has_result' in something not a structure or union
+mysql.c:160: error: `res_idx' undeclared (first use in this function)
+mysql.c:161: error: request for member `res' in something not a structure or union
+mysql.c:162: error: request for member `res' in something not a structure or union
+mysql.c:163: error: request for member `has_result' in something not a structure or union
+mysql.c: At top level:
+mysql.c:168: error: parse error before '*' token
+mysql.c: In function `wn_db_free':
+mysql.c:175: error: request for member `has_result' in something not a structure or union
+mysql.c:175: error: request for member `res' in something not a structure or union
+mysql.c:176: error: request for member `res' in something not a structure or union
+mysql.c:178: error: request for member `connected' in something not a structure or union
+mysql.c:179: error: request for member `conn' in something not a structure or union
+mysql.c: At top level:
+/usr/include/mysql.h:247: error: storage size of `scramble' isn't known
+/usr/include/mysql.h:590: error: storage size of `last_error' isn't known
+/usr/include/mysql.h:591: error: storage size of `sqlstate' isn't known
+../../wn_err.h:33: warning: `errors' defined but not used
+*** Error code 1
+
+Stop.
+*** Error code 1
+
+Stop.
+*** Error code 1
+
+Stop.

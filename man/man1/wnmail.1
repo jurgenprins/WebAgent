@@ -1,0 +1,30 @@
+.TH WNMAIL 1L "12 Aug 1999"
+.SH NAME
+wnmail \- mail contents of a WNF file
+.SH SYNOPSIS
+.B wnmail
+.I config_file
+.I to
+.I infile
+.SH DESCRIPTION
+.I wnmail
+reads the contents of the specified
+.I infile
+and translates these into plain ASCII text. This text will be mailed
+to the recipient
+.I to
+by using the priority template, SMTP gateway and additional settings 
+from the configuration file
+.I config_file
+For more information on the contents of this file, please refer to
+.I wncontrol(1L)
+.LP
+.SH "SEE ALSO"
+wncontrol(1L),
+wnparse(1L),
+wnletter(1L),
+wndiff(1L),
+wnprune(1L),
+wnclean(1L)
+.SH AUTHORS
+Copyright (C) 1999 JP

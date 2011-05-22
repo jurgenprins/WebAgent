@@ -1,0 +1,27 @@
+.TH WNDIFF 1L "12 Aug 1999"
+.SH NAME
+wndiff \- find differences between two WNF files
+.SH SYNOPSIS
+.B wndiff
+.I file1
+.I file2
+.I outfile
+.SH DESCRIPTION
+.I wndiff
+is a utility that reads 
+.I file1 
+and 
+.I file2 
+in WNF format, compares them and outputs everything that file2 has, and 
+file1 has not, to a new file
+.I outfile
+, which is also in WNF format.
+.SH "SEE ALSO"
+wncontrol(1L),
+wnparse(1L),
+wnmail(1L),
+wnletter(1L),
+wnprune(1L),
+wnclean(1L)
+.SH AUTHORS
+Copyright (C) 1999 JP

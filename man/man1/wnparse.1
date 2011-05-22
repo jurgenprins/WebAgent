@@ -1,0 +1,76 @@
+.TH WNPARSE 1L "12 Aug 1999"
+.SH NAME
+wnparse \- retrieve an url and parse it into a WNF file
+.SH SYNOPSIS
+.B wnparse
+.I host
+.I uri
+.I outfile
+[ 
+.I timeout
+[
+.I readfile
+] ]
+.SH DESCRIPTION
+.I wnparse
+fetches the url that is composed of the 
+.I host
+and
+.I uri
+parameters as http://<host><uri> and, when successful, parses
+the HTML into a WNF structure that is written into
+.I outfile
+.LP
+The optional 
+.I timeout
+parameter specifies the maximum wait time for completion of document
+before bailing out. If you do now set this value, a default will be
+used.
+.LP
+The optional parameter
+.I readfile
+specifies the file where a dump of the original HTML file will be
+written.
+.LP
+The WNF structure breaks down into four types of tags:
+.TP
+.B \ ERROR
+this line indicates an error
+.TP
+.B \ TEXT
+this line contains plain text
+.TP
+.B \ LINK
+this line contains a hyperlink
+.TP
+.B \ IMAGE
+this line contains an image reference
+.TP
+.LP
+Each line consists of at most three columns:
+.TP
+.B \ BLOCKNR
+indicates a unique number, that spans all tags that are within
+the same meaningful HTML layout, e.g. in a <P> alinea, in a
+<BLOCKQUOTE> etc.
+.TP
+.B \ PARAMETER
+indicates the reference for the tag. In a LINK, it is the href
+part. In an IMAGE, it is the src part.
+.TP
+.B \ CONTENT
+indicates the describing content for the tag. In a LINK, this
+is what is found between <a href=> and </a>.
+.SH EXAMPLES
+wnparse www.foo.com /bar out
+.LP
+retrieves the HTML from http://www.foo.com/bar and writes the
+WNF structure into the file 'out'
+.SH "SEE ALSO"
+wncontrol(1L),
+wndiff(1L),
+wnmail(1L),
+wnprune(1L),
+wnclean(1L)
+.SH AUTHORS
+Copyright (C) 1999 JP

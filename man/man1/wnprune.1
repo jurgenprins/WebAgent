@@ -1,0 +1,87 @@
+.TH WNPRUNE 1L "12 Aug 1999"
+.SH NAME
+wnprune \- prune WNF data files
+.SH SYNOPSIS
+.B wnprune
+.I config_file
+.I max_days
+[
+.I min_size
+[
+.I min_entries
+[
+.I test
+] ] ]
+.SH DESCRIPTION
+.I wnprune
+is a utility that scans the WNF data directory recursively for WNF 
+files that are older than
+.I max_days
+and deletes these files. 
+.LP
+The optional parameter
+.I min_size
+, if specified by a positive number, enforces the number of Kbytes in 
+each data directory that will always remain, even though some of the
+content is older than max_days.
+.LP
+The optional parameter
+.I min_entries
+, if specified by a positive number, enforces the number of entries
+(files) in each directory that will always remain, even though they
+are older than max_days. 
+.LP
+Both parameters ensure some content will always be left behind in
+directories representing ill-updating sites. They would be left without 
+any files if you don't specify at least one of the 
+.I min_size 
+or
+.I min_entries
+parameters. 
+.LP
+If you want to play with the parameters and see what and how many
+files are pruned, specify the extra optional parameter
+.I test
+This will run the prune, but instead of deleting the files it
+prints details about how your directories will be affected by the 
+prune. Is it wise to redirect the output to some file, for it can
+be a lot of information.
+.LP
+The WNF data directory is fetched from the configuration file
+.I config_file
+For more information on the contents of this file, please refer to
+.I wncontrol(1L)
+.SH NOTES
+By choosing the
+.I min_entries
+parameter to block pruning, you still don't really know how much 
+content this represents. The number of Kbytes tackles this 
+problem a bit better. Therefore, the 
+.I min_size
+parameter must always be specified before using the 
+.I min_entries
+parameter.
+.SH EXAMPLES
+.LP
+wnprune etc/wncontrol.conf 7 500
+.LP
+prune all files older than a week as long as still more than 500Kb remains
+in each directory
+.LP
+wnprune etc/wncontrol.conf 7 0 20
+.LP
+prune all files older than a week as long as still more than 20 files remain
+in each directory
+.LP
+wnprune etc/wncontrol.conf 0 1000
+.LP
+prune all directories so that each directory contains at most 1Mb of content
+.SH "SEE ALSO"
+wncontrol(1L),
+wndiff(1L),
+wnparse(1L),
+wnmail(1L),
+wnletter(1L),
+wnclean(1L)
+.SH AUTHORS
+Copyright (C) 1999 JP

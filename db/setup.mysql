@@ -1,0 +1,121 @@
+# MySQL dump 7.1
+#
+# Host: localhost    Database: wn
+#--------------------------------------------------------
+# Server version	3.22.32
+
+#
+# Table structure for table 'cats'
+#
+CREATE TABLE cats (
+  id int(11) DEFAULT '0' NOT NULL auto_increment,
+  p_id int(11),
+  name_en char(32),
+  size int(11),
+  name_nl char(32),
+  PRIMARY KEY (id)
+);
+
+#
+# Dumping data for table 'cats'
+#
+
+INSERT INTO cats VALUES (1,0,'Arts',51,'Kunst & Cultuur');
+INSERT INTO cats VALUES (2,0,'Business',134,'Zakelijk');
+INSERT INTO cats VALUES (3,0,'Computers',71,'Computers');
+INSERT INTO cats VALUES (4,0,'Education',39,'Onderwijs');
+INSERT INTO cats VALUES (5,0,'Entertainment',60,'Entertainment');
+INSERT INTO cats VALUES (6,0,'Government',62,'Overheid');
+INSERT INTO cats VALUES (7,0,'Health',18,'Gezondheid');
+INSERT INTO cats VALUES (8,0,'News',199,'Nieuws');
+INSERT INTO cats VALUES (9,0,'Recreation',79,'Sport & Recreatie');
+INSERT INTO cats VALUES (10,0,'Regional',22,'Regionaal');
+INSERT INTO cats VALUES (11,0,'Science',54,'Wetenschap');
+INSERT INTO cats VALUES (12,0,'Society',81,'Maatschappelijk');
+INSERT INTO cats VALUES (-1,0,'-- Private --',869,'-- Prive --');
+INSERT INTO cats VALUES (13,0,'Adult',31,'Sex & Erotiek');
+INSERT INTO cats VALUES (14,0,'Internet',155,'Internet');
+
+#
+# Table structure for table 'docs'
+#
+CREATE TABLE docs (
+  id int(11) DEFAULT '0' NOT NULL auto_increment,
+  host char(128),
+  title char(255),
+  uri char(255),
+  updated int(11),
+  status int(11),
+  changed int(11),
+  changed_serv char(32),
+  watchers int(11),
+  change_freq int(11),
+  PRIMARY KEY (id)
+);
+
+#
+# Table structure for table 'docs_banned'
+#
+CREATE TABLE docs_banned (
+  id int(11) DEFAULT '0' NOT NULL auto_increment,
+  host char(128),
+  uri char(255),
+  alt_host char(128) DEFAULT '',
+  alt_uri char(255) DEFAULT '',
+  shw_host char(128) DEFAULT '',
+  shw_uri char(255) DEFAULT '',
+  PRIMARY KEY (id)
+);
+
+#
+# Table structure for table 'docs_cats'
+#
+CREATE TABLE docs_cats (
+  did int(11),
+  cid int(11)
+);
+
+#
+# Table structure for table 'errors'
+#
+CREATE TABLE errors (
+  did int(11),
+  status int(11),
+  count int(11)
+);
+
+#
+# Table structure for table 'users'
+#
+CREATE TABLE users (
+  id int(11) DEFAULT '0' NOT NULL auto_increment,
+  email char(128),
+  passwd char(8),
+  lastlogon int(11),
+  PRIMARY KEY (id)
+);
+
+#
+# Table structure for table 'watch'
+#
+CREATE TABLE watch (
+  uid int(11),
+  did int(11),
+  ubase int(11),
+  email_prio int(11),
+  keywords varchar(32),
+  letter_update int(11),
+  filter int(11),
+  title varchar(64) DEFAULT '',
+  bfilter varchar(64) DEFAULT '',
+  tmpl int(11) DEFAULT '0'
+);
+
+#
+# Table structure for table 'words_cats'
+#
+CREATE TABLE words_cats (
+  cid int(11),
+  word char(32),
+  freq int(11)
+);

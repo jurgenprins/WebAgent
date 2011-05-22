@@ -1,0 +1,47 @@
+<!-- begin WebAgent aanmelding -->
+
+<form method=post action=http://www.webagent.nl/new.php>
+
+<!-- url    is de URL waarvoor de gebruiker aangemeld wordt.
+            Dit veld mag niet weggelaten worden of leeg zijn.            -->  
+
+ <input type=hidden name=url value="http://uw.website.hier/">
+
+<!-- url_ok is de URL die getoond wordt als de aanmelding goed is verlopen. 
+            Laat dit veld weg om WebAgent zelf een melding te laten geven.
+            In deze melding zit o.a. het gegenereerde wachtwoord indien deze
+            niet wordt meegegeven in dit formulier.                      --> 
+
+<!--
+ <input type=hidden name=url_ok value="http://uw.website.hier/webagent_ok.html">
+-->
+
+<!-- url_fail is de URL die getoond wordt als de aanmelding is mislukt.
+              Laat dit veld weg om WebAgent zelf een melding te laten geven.
+              In deze melding zit o.a. de reden waarom het is misgegaan. -->
+
+<!--
+ <input type=hidden name=url_fail value="http://uw.website.hier/webagent_fail.html">
+-->
+
+<!-- e      is het invoerveld waar het emailadres ingegeven wordt.
+            Dit veld mag niet weggelaten worden of leeg zijn.            -->
+
+ Emailadres: <input name=e size=20 maxlength=128>
+
+<!-- pw     is het invoerveld waar het wachtwoord ingegeven wordt.
+            Laat dit veld weg om WebAgent zelf een wachtwoord te laten
+            genereren. Het is dan verstandig om eveneens geen eigen url_ok
+            te definieren, daar de gebruiker dan niet weet welk wachtwoord
+            gegenereerd is (hij kan deze wel laten toesturen op de WebAgent
+            site).                                                       -->
+
+<!--
+ Wachtwoord: <input name=pw type=password size=8 maxlength=8>
+-->
+  
+ <input type=submit value="Hou me op de hoogte">
+
+</form>
+
+<!-- einde WebAgent aanmelding -->
